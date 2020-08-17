@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.body-header- {
+  background-color: #064789;
+}
+
+.main-form- {
+  background-color: #EBF2FA;
+}
+
+article.main-article- h2, p {
+  font-family: 'Noto Serif', serif;
+}
+
+.body-footer- {
+  background-color: #484538;
+}
+
+.body-footer- a {
+  text-decoration: none;
+}

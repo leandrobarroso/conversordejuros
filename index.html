@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164327484-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-164327484-1');
+        </script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Ferramenta financeira simples e prática para conversão de taxas de juros. Obtenha de forma fácil as taxas de juros equivalentes em períodos diários, mensais e anuais.">
+        <meta name="author" content="Leandro Barroso">
+        
+        <title>Conversor de Taxas de Juros</title>
+        
+        <link rel="icon" href="img/favicon.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+      <header class="w-100 m-0 shadow-sm p-1 text-white body-header-">
+        <h1 class="text-center text-wrap m-0 p-3 titulo-principal-">CONVERSOR DE TAXAS DE JUROS</h1>
+      </header>
+      
+      <main class="w-100 p-2 container body-main-">        
+        <section id="main-row" class="w-100 p-3 m-0 row no-gutters justify-content-center main-section-">            
+          <form class="col-12 col-md-6 w-100 m-2 rounded-lg shadow p-3 form-row no-gutters main-form-">
+              <fieldset class="form-group col-12 row p-1 m-0 form-field-">
+                  <legend class="col-12 px-0 m-0 w-100">Taxa:</legend>                    
+                  <div class="form-group col-12 row align-items-center p-0 m-0">
+                      <input class="form-control col-7" id="taxaDe" type="text" name="taxaDe" aria-describedby="taxaDeHelpBlock" required autofocus>
+                      <label class="col-1 m-0 px-2 text-left taxaDe-" for="taxaDe">%</label>
+                      <select class="custom-select col-4" id="periodoDe" name="periodoDe" required>
+                          <option value=01>ao dia</option>
+                          <option value=30>ao mês</option>
+                          <option value=360>ao ano</option>                        
+                      </select>                
+                  </div>
+                  <small id="taxaDeHelpBlock" class="form-text text-muted col-12 m-0 p-0">
+                      Entre com o valor da taxa para conversão no formato 0.0000
+                  </small>
+              </fieldset>
+              <fieldset class="form-group col-12 row p-1 m-0 campo-form-">
+                  <legend class="col-12 px-0 m-0 w-100">Taxa convertida:</legend>
+                  <div class="form-group col-12 row align-items-center p-0 m-0">
+                      <input class="form-control col-7" id="taxaPara" type="text" name="taxaPara"  required readonly>
+                      <label class="col-1 m-0 px-2 text-left taxaPara-" for="taxaPara">%</label>
+                      <select class="custom-select col-4" id="periodoPara" name="periodoPara" required>
+                          <option value=01>ao dia</option>
+                          <option value=30>ao mês</option>
+                          <option value=360>ao ano</option>                        
+                      </select>                
+                  </div>
+              </fieldset>                                
+          </form>
+
+          <article class="my-3 text-justify main-article-">
+              <h2>Conceitos básicos</h2>
+              <p>Juro é a remuneração ou o custo do capital, podendo ser também definido como o "aluguel pago pelo uso do dinheiro".</p>
+              <p>Sendo o juro o aluguel do capital, ele deve ser calculado de forma diretamente proporcional ao capital e ao prazo.</p>
+              <p>Sob o sistema de capitalização composta (taxas efetivas), duas taxas são equivalentes se aplicadas ao mesmo capital, durante o mesmo período de tempo, produzem o mesmo montante (capital + juros).</p>
+              <p>O Conversor de juros é uma ferramenta que permite converter a taxa de juros referente a qualquer periodicidade de tempo em uma taxa equivalente em outra periodicidade. Por exemplo, você pode converter a taxa de juros anual para mensal ou diária.</p>
+              <h2>Fórmulas utilizadas para conversão de taxas de juros</h2>
+              <div class="container w-100 m-0 p-0">
+                  <ul id="formulas-list-1" class="row no-gutters align-items-center justify-content-center list-group list-group-horizontal p-0 my-2">
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Diária para mensal</h3>\(i_m = (1 + i_d)^{30}-1\)</li>
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Diária para anual</h3>\(i_a = (1 + i_d)^{360}-1\)</li>
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Mensal para diária</h3>\(i_d = (1 + i_m)^{1/30}-1\)</li>               
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Mensal para anual</h3>\(i_a = (1 + i_m)^{12}-1\)</li>
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Anual para diária</h3>\(i_d = (1 + i_a)^{1/360}-1\)</li>
+                      <li class="list-group-item col-12 col-sm-6 col-xl-2 p-2 m-0 text-wrap border text-center"><h3 class="h3-formula font-italic">Anual para mensal</h3>\(i_m = (1 + i_a)^{1/12}-1\)</li>
+                  </ul>
+              </div>                    
+              <p class="m-0">Sendo:</p>
+              <ul id="formulas-list-base" class="list-group list-group-horizontal-md my-1">
+                  <li class="list-group-item">\(i_d\) = taxa de juros diária</li>
+                  <li class="list-group-item">\(i_m\) = taxa de juros mensal</li>
+                  <li class="list-group-item">\(i_a\) = taxa de juros anual</li>
+              </ul>
+          </article>
+        </section>
+      </main>    
+      
+      <footer id="footer" class="d-block p-1 body-footer-">
+          <section id="social-media-links" class="container-fluid w-100 py-0 px-0">
+              <div class="w-100 row no-gutters align-items-center justify-content-center">
+                  <ul class="m-0  p-0 col w-100 d-flex justify-content-center justify-content-lg-end">
+                      <li class="list-inline-item"><a href="#" class="text-decoration-none mx-2"><i class="icones text-light fa fa-facebook-square"></i></a></li>
+                      <li class="list-inline-item"><a href="#" class="text-decoration-none mx-2"><i class="icones text-light fa fa-instagram"></i></a></li>
+                      <li class="list-inline-item"><a href="#" class="text-decoration-none mx-2"><i class="icones text-light fa fa-linkedin-square"></i></a></li>
+                  </ul>
+              </div>
+          </section>
+          <section class="row no-gutters align-items-center justify-content-between w-100">
+              <p class="m-0 p-1 text-light"><small class="font-weight-light">Copyright<i class="text-light fa fa-copyright"></i> 2020 Leandro Barroso. <a href="https://github.com/leandrobarroso/conversordejuros/blob/master/LICENSE" target="_blank">MIT License</a>.</small></p>
+              <p class="m-0 p-1 text-light"><small class="font-weight-light">Desenvolvido por <a href="http://leandrobarroso.com/" target="_blank">Leandro Barroso</a></small class="font-weight-light"></p>
+          </section>
+      </footer>
+
+      
+      
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="js/main.js"></script>
+      
+      <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="js/main.js"></script> -->
+  </body>
+</html>
